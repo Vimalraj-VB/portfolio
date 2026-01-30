@@ -1,8 +1,8 @@
 .contact-section {
-  background: radial-gradient(circle at left, #0a0a0a 0%, #02141f 100%);
+  background: var(--primary-bg);
   background-size: 200% 200%;
   animation: gradientMove 8s ease infinite;
-  color: white;
+  color: var(--primary-text);
   padding: 5rem 1rem;
   position: relative;
   overflow: hidden;
@@ -12,7 +12,8 @@
   font-size: 3rem;
   font-weight: 800;
   text-align: center;
-  background: linear-gradient(90deg, #92c7cf, #3ba3b0, #256d85);
+  background: var(--accent-gradient);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: fadeInDown 0.8s ease;
@@ -22,21 +23,23 @@
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--card-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 40px var(--shadow-color);
   animation: fadeInUp 1s ease forwards;
   transition: all 0.4s ease;
+  border: 1px solid var(--card-border);
 }
 
 .custom-input {
   border-radius: 12px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--card-border);
   background-color: rgba(255, 255, 255, 0.05);
-  color: #f1f1f1;
+  /* Keep slightly transparent for inputs */
+  color: var(--primary-text);
   padding: 0.75rem 1.2rem;
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -45,19 +48,19 @@
 }
 
 .custom-input::placeholder {
-  color: #ccc;
+  color: var(--secondary-text);
 }
 
 .custom-input:focus {
   outline: none;
-  border: 2px solid #3ba3b0;
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 10px #256d85;
-  color: #fff;
+  border: 2px solid var(--accent-color);
+  background-color: var(--card-bg);
+  box-shadow: 0 0 10px var(--shadow-color);
+  color: var(--primary-text);
 }
 
 .contact-form .btn {
-  background: linear-gradient(135deg, #92c7cf, #256d85);
+  background: var(--accent-gradient);
   border: none;
   color: #fff;
   font-weight: 600;
@@ -68,10 +71,11 @@
 }
 
 .contact-form .btn:hover {
-  background: #256d85;
+  background: var(--accent-gradient);
+  filter: brightness(1.2);
   color: #fff;
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(37, 109, 133, 0.5);
+  box-shadow: 0 6px 20px var(--shadow-color);
 }
 
 /* Animations */

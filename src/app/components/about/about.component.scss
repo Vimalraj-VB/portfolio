@@ -1,13 +1,17 @@
+@import '../../app.component.scss';
+
 .about-section {
   padding: 5rem 1rem;
-  background: radial-gradient(circle at left, #0a0a0a, #02141f);
-  color: white;
+  background: var(--primary-bg);
+  /* Use global variable */
+  color: var(--primary-text);
   text-align: center;
 
   .section-title {
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(90deg, #92c7cf, #3ba3b0, #256d85);
+    background: var(--accent-gradient);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
@@ -15,9 +19,55 @@
 
   .section-subtitle {
     font-size: 1.1rem;
-    color: #d0d0d0;
+    color: var(--secondary-text);
     max-width: 800px;
     margin: 0 auto;
+
+    strong {
+      color: var(--accent-color);
+    }
+  }
+
+  /* Achievements Grid Styles */
+  .achievements-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+
+    .achievement-item {
+      background: var(--card-bg);
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(5px);
+      text-align: center;
+      transition: all 0.3s ease;
+
+      h3 {
+        color: var(--accent-color);
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      p {
+        color: var(--secondary-text);
+        margin: 0;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        background: var(--card-bg);
+        border-color: var(--accent-color);
+        box-shadow: 0 4px 15px var(--shadow-color);
+      }
+    }
   }
 
   .about-grid {
@@ -28,22 +78,23 @@
   }
 
   .about-box {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--card-bg);
     padding: 1.5rem;
     border-radius: 12px;
     backdrop-filter: blur(8px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 18px var(--shadow-color);
     transition: transform 0.3s ease;
+    border: 1px solid var(--card-border);
 
     h4 {
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
-      color: #aad9dd;
+      color: var(--accent-color);
     }
 
     p {
       font-size: 0.95rem;
-      color: #e0e0e0;
+      color: var(--secondary-text);
     }
 
     &:hover {
@@ -65,6 +116,11 @@
     .section-subtitle {
       font-size: 1rem;
       padding: 0 0.5rem;
+    }
+
+    .achievements-grid {
+      flex-direction: column;
+      gap: 1rem;
     }
 
     .about-grid {

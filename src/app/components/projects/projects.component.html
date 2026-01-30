@@ -1,4 +1,4 @@
-<section id="projects" class="projects-section text-white">
+<section id="projects" class="projects-section">
   <div class="container">
     <h2 class="section-title text-center">Projects</h2>
     <div class="row g-4">
@@ -6,7 +6,7 @@
         <div class="project-card h-100">
           <div class="card-body">
             <h5 class="card-title">{{ project.title }}</h5>
-            <p class="card-text">{{ project.description }}</p>
+            <p class="card-text" [innerHTML]="project.description"></p>
           </div>
           <div class="card-footer">
             <a [href]="project.link" class="btn btn-light btn-sm" target="_blank">

@@ -1,6 +1,6 @@
 .experience-section {
   padding: 6rem 1rem;
-  background: radial-gradient(circle at left, #0a0a0a, #02141f);
+  background: var(--primary-bg);
   background-size: 200% 200%;
   animation: gradientMove 12s ease infinite;
 
@@ -9,7 +9,8 @@
     font-weight: 800;
     text-align: center;
     margin-bottom: 3rem;
-    background: linear-gradient(90deg, #92c7cf, #3ba3b0, #256d85);
+    background: var(--accent-gradient);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: fadeInDown 0.8s ease both;
@@ -21,6 +22,7 @@
 
     .timeline-item {
       position: relative;
+      /* ... existing styles ... */
       margin-bottom: 3rem;
       padding-left: 60px;
       animation: fadeInUp 1s ease forwards;
@@ -39,48 +41,52 @@
       }
 
       .timeline-dot {
+        /* ... existing dot styles ... */
         position: absolute;
         left: 30px;
         top: 8px;
         width: 16px;
         height: 16px;
-        background: #92c7cf;
+        background: var(--accent-color);
         border-radius: 50%;
         transform: translateX(-50%);
-        box-shadow: 0 0 0 4px rgba(59, 163, 176, 0.3), 0 0 12px #3ba3b0;
+        box-shadow: 0 0 0 4px var(--shadow-color), 0 0 12px var(--accent-color);
         animation: pulseDot 1.8s ease-in-out infinite;
       }
 
       .glass-card {
-        background: rgba(255, 255, 255, 0.08);
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        color: var(--primary-text);
         border-radius: 12px;
         padding: 1rem 1.5rem;
         backdrop-filter: blur(10px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 24px var(--shadow-color);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         opacity: 0;
         animation: fadeInUp 0.8s ease forwards;
 
         &:hover {
           transform: translateY(-5px);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 12px 30px var(--shadow-color);
         }
 
         h5 {
           margin: 0 0 0.25rem;
           font-weight: 600;
           font-size: 1.1rem;
+          color: var(--primary-text);
         }
 
         .company {
           font-size: 0.9rem;
-          color: #aad9dd;
+          color: var(--accent-color);
           margin-bottom: 0.5rem;
         }
 
         .description {
           font-size: 0.95rem;
-          color: #e0e0e0;
+          color: var(--secondary-text);
           line-height: 1.5;
         }
       }
@@ -129,11 +135,11 @@
 
 @keyframes glowLine {
   from {
-    box-shadow: 0 0 10px #256d85;
+    box-shadow: 0 0 10px var(--accent-color);
   }
 
   to {
-    box-shadow: 0 0 18px #3ba3b0;
+    box-shadow: 0 0 18px var(--accent-color);
   }
 }
 
@@ -159,6 +165,7 @@
     display: none;
   }
 }
+
 @media (max-width: 768px) {
   .experience-section {
     padding: 4rem 1rem;
@@ -202,6 +209,7 @@
     }
   }
 }
+
 .glow-orbs {
   position: absolute;
   width: 100%;
@@ -215,7 +223,7 @@
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(59,163,176,0.4), transparent);
+    background: radial-gradient(circle, rgba(59, 163, 176, 0.4), transparent);
     filter: blur(80px);
     animation: orbMove 20s ease-in-out infinite alternate;
   }
@@ -223,20 +231,28 @@
   .orb1 {
     top: 10%;
     left: 5%;
-    background: radial-gradient(circle, rgba(59,163,176,0.3), transparent);
+    background: radial-gradient(circle, rgba(59, 163, 176, 0.3), transparent);
     animation-delay: 0s;
   }
 
   .orb2 {
     bottom: 5%;
     right: 10%;
-    background: radial-gradient(circle, rgba(146,199,207,0.2), transparent);
+    background: radial-gradient(circle, rgba(146, 199, 207, 0.2), transparent);
     animation-delay: 3s;
   }
 }
 
 @keyframes orbMove {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(30px, -20px) scale(1.05); }
-  100% { transform: translate(-20px, 20px) scale(1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(-20px, 20px) scale(1);
+  }
 }

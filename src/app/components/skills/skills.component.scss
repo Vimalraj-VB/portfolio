@@ -1,8 +1,8 @@
 .skills-section {
   padding: 6rem 1rem;
-  background: radial-gradient(circle at left, #0a0a0a 0%, #02141f 100%);
+  background: var(--primary-bg);
   animation: gradientMove 10s ease infinite;
-  color: white;
+  color: var(--primary-text);
   text-align: center;
   overflow: hidden;
 }
@@ -10,7 +10,8 @@
 .section-title {
   font-size: 3rem;
   font-weight: 800;
-  background: linear-gradient(90deg, #92c7cf, #3ba3b0, #256d85);
+  background: var(--accent-gradient);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: fadeInDown 0.8s ease;
@@ -38,10 +39,11 @@
   padding: 0.6rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  color: #ffffff;
+  /* Keep white for contrast on colorful backgrounds */
   border-radius: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 15px var(--shadow-color);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   position: relative;
@@ -51,34 +53,90 @@
 
 .skill-badge:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px var(--accent-color);
 }
 
 /* Radial-gradient styles (aesthetic & glowing) */
-.java     { background: radial-gradient(circle at top left, #f44336, #e57373); }
-.spring   { background: radial-gradient(circle at top left, #4caf50, #81c784); }
-.mysql    { background: radial-gradient(circle at top left, #1565c0, #64b5f6); }
-.rest     { background: radial-gradient(circle at top left, #009688, #4db6ac); }
-.angular  { background: radial-gradient(circle at top left, #dd0031, #ef5350); }
-.git      { background: radial-gradient(circle at top left, #f4511e, #ff7043); }
-.docker   { background: radial-gradient(circle at top left, #0db7ed, #0277bd); }
-.postman  { background: radial-gradient(circle at top left, #ff6c37, #ff9966); }
-.mongo    { background: radial-gradient(circle at top left, #3fa037, #6cc24a); }
-.aws      { background: radial-gradient(circle at top left, #232f3e, #ff9900); }
-.linux    { background: radial-gradient(circle at top left, #000000, #4e4e4e); }
-.html     { background: radial-gradient(circle at top left, #e44d26, #f16529); }
+.java {
+  background: radial-gradient(circle at top left, #f44336, #e57373);
+}
+
+.spring {
+  background: radial-gradient(circle at top left, #4caf50, #81c784);
+}
+
+.mysql {
+  background: radial-gradient(circle at top left, #1565c0, #64b5f6);
+}
+
+.rest {
+  background: radial-gradient(circle at top left, #009688, #4db6ac);
+}
+
+.angular {
+  background: radial-gradient(circle at top left, #dd0031, #ef5350);
+}
+
+.git {
+  background: radial-gradient(circle at top left, #f4511e, #ff7043);
+}
+
+.docker {
+  background: radial-gradient(circle at top left, #0db7ed, #0277bd);
+}
+
+.postman {
+  background: radial-gradient(circle at top left, #ff6c37, #ff9966);
+}
+
+.mongo {
+  background: radial-gradient(circle at top left, #3fa037, #6cc24a);
+}
+
+.aws {
+  background: radial-gradient(circle at top left, #232f3e, #ff9900);
+}
+
+.linux {
+  background: radial-gradient(circle at top left, #000000, #4e4e4e);
+}
+
+.html {
+  background: radial-gradient(circle at top left, #e44d26, #f16529);
+}
+
+.maven {
+  background: radial-gradient(circle at top left, #c0272d, #e31b23);
+}
+
+.oops {
+  background: radial-gradient(circle at top left, #673ab7, #9575cd);
+}
 
 /* Scroll animation */
 @keyframes scrollLeft {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Background animation */
 @keyframes gradientMove {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .glow-orbs {
@@ -94,7 +152,7 @@
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(59,163,176,0.4), transparent);
+    background: radial-gradient(circle, rgba(59, 163, 176, 0.4), transparent);
     filter: blur(80px);
     animation: orbMove 20s ease-in-out infinite alternate;
   }
@@ -102,20 +160,28 @@
   .orb1 {
     top: 10%;
     left: 5%;
-    background: radial-gradient(circle, rgba(59,163,176,0.3), transparent);
+    background: radial-gradient(circle, rgba(59, 163, 176, 0.3), transparent);
     animation-delay: 0s;
   }
 
   .orb2 {
     bottom: 5%;
     right: 10%;
-    background: radial-gradient(circle, rgba(146,199,207,0.2), transparent);
+    background: radial-gradient(circle, rgba(146, 199, 207, 0.2), transparent);
     animation-delay: 3s;
   }
 }
 
 @keyframes orbMove {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(30px, -20px) scale(1.05); }
-  100% { transform: translate(-20px, 20px) scale(1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(-20px, 20px) scale(1);
+  }
 }

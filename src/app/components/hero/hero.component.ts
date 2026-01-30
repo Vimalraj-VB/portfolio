@@ -13,6 +13,8 @@ import {
   selector: 'app-hero',
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.scss'],
+  standalone: true,
+  imports: [],
   animations: [
     trigger('fadeInUp', [
       transition(':enter', [

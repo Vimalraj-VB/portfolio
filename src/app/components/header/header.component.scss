@@ -3,32 +3,45 @@
   top: 0;
   width: 100%;
   z-index: 999;
-  background: radial-gradient(circle at left, #256d85 0%, #0a0a0a 40%, #02141f 90%);
+  background: var(--nav-bg);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-  animation: bgMove 12s ease infinite;
-  background-size: 400% 400%;
+  box-shadow: 0 4px 20px var(--shadow-color);
   transition: all 0.4s ease;
 
   .navbar-brand {
-    color: #d6f6ff;
+    color: var(--primary-text);
     font-weight: 800;
     font-size: 1.3rem;
     letter-spacing: 0.8px;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    text-shadow: 0 2px 3px rgba(28, 43, 49, 0.6);
+    text-shadow: 0 1px 2px var(--shadow-color);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--accent-color);
+    }
 
     img {
       height: 30px;
-      filter: drop-shadow(0 0 6px rgba(44, 64, 71, 0.3));
+      filter: drop-shadow(0 0 6px var(--shadow-color));
+      transition: filter 0.3s ease;
     }
   }
 
+  /* Specific color for Brand Name in Light Mode to match logo */
+  body.light-theme & .navbar-brand {
+    color: #256d85;
+  }
+
+  body.light-theme & .navbar-brand img {
+    filter: none;
+  }
+
   .nav-link {
-    color: #cdefff !important;
+    color: var(--nav-text) !important;
     font-weight: 500;
     margin-left: 1.2rem;
     position: relative;
@@ -46,7 +59,7 @@
     }
 
     &:hover {
-      color: #ffffff !important;
+      color: var(--nav-text-hover) !important;
     }
 
     &:hover::after {
@@ -54,7 +67,7 @@
     }
 
     &.active {
-      color: #ffffff !important;
+      color: var(--accent-color) !important;
       font-weight: 600;
     }
   }
@@ -63,11 +76,16 @@
     border: none;
     background: transparent;
     outline: none;
-    color: #cdefff;
+    color: var(--primary-text);
     font-size: 1.25rem;
 
     &:hover {
-      color: #00c3ff;
+      color: var(--accent-color);
+    }
+
+    .navbar-toggler-icon {
+      filter: brightness(0.5);
+      /* Make it darker for light bg if needed, but primary-text is better */
     }
   }
 }
@@ -89,41 +107,28 @@
 
 // Sticky header effect when scrolling
 .custom-navbar.scrolled {
-  background: rgba(0, 0, 0, 0.95);
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+  background: var(--nav-bg);
+  box-shadow: 0 6px 30px var(--shadow-color);
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-
-* {box-sizing: border-box;}
-
-body {
-  font-family: "Montserrat", sans-serif;
-  background-color: #fff;
+/* Theme Toggle Switch */
+.theme-toggle-wrapper {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  text-align: center;
-  min-height: 100vh;
-  margin: 0;
-  transition: background 0.2s linear;
 }
-
-// body.dark {background-color: #a2a2a2;} /* #9b59b6 */
-
-body.dark h1, body.dark .support a {color: #fff;}
 
 .checkbox {
   opacity: 0;
   position: absolute;
-  border: 1px solid white;
+  width: 0;
+  height: 0;
 }
 
 .checkbox-label {
-  background-color: #b3b3b3;
-  width: 50px;
-  height: 26px;
+  background-color: #3e4e5e;
+  width: 54px;
+  height: 28px;
   border-radius: 50px;
   position: relative;
   padding: 5px;
@@ -131,56 +136,45 @@ body.dark h1, body.dark .support a {color: #fff;}
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+  transition: background-color 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 
-.fa-moon {color: #f1c40f;}
+  .moon {
+    color: #f1c40f;
+    font-size: 14px;
+  }
 
-.fa-sun {color: #f39c12;}
+  .sun {
+    color: #f39c12;
+    font-size: 14px;
+  }
 
-.checkbox-label .ball {
-  background-color: #fff;
-  width: 22px;
-  height: 22px;
-  position: absolute;
-  left: 2px;
-  top: 2px;
-  border-radius: 50%;
-  transition: transform 0.2s linear;
-}
-
-.checkbox:checked + .checkbox-label .ball {
-  transform: translateX(24px);
-}
-
-@media (max-width: 767px) {
-  .checkbox-label {
-    margin-left: 1rem;
-    scale: 0.9;
+  .ball {
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 4px;
+    top: 3px;
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 }
 
+/* Toggle Active State */
+.checkbox:checked+.checkbox-label {
+  background-color: #87ceeb;
+  /* Light Blue for Day */
 
-
-
-
-
-
-
-/*  Support me if you like it */
-.support {
-	position: absolute;
-	right: 20px;
-	bottom: 20px;
+  .ball {
+    transform: translateX(26px);
+  }
 }
 
-.support a {
-  color: #292c35;
-  font-size: 32px;
-  backface-visibility: hidden;
-  display: inline-block;
-  transition: transform 0.2s ease;
-}
-
-.support a:hover{
-  transform: scale(1.1);
+@media (max-width: 767px) {
+  .theme-toggle-wrapper {
+    margin-top: 10px;
+    /* Adjust if needed for mobile menu */
+  }
 }

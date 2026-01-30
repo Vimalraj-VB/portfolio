@@ -1,4 +1,4 @@
-<section id="experience" class="experience-section text-white">
+<section id="experience" class="experience-section">
   <div class="container">
     <h2 class="section-title">Experience</h2>
     <div class="timeline">
@@ -7,7 +7,7 @@
         <div class="timeline-content glass-card">
           <h5>{{ exp.role }}</h5>
           <p class="company">{{ exp.company }} • {{ exp.duration }}</p>
-          <p class="description">{{ exp.description }}</p>
+          <p class="description" [innerHTML]="exp.description"></p>
         </div>
       </div>
     </div>

@@ -1,0 +1,31 @@
+<section class="tech-excellence-section" id="excellence">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="title">Technical <span>Excellence</span></h2>
+            <p class="subtitle">Deep dive into the core architecture and specialized backend expertise I bring to
+                projects.</p>
+        </div>
+
+        <div class="excellence-grid">
+            @for (item of expertise; track item.title) {
+            <div class="excellence-card" data-aos="zoom-in" [attr.data-aos-delay]="$index * 150">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="icon-wrapper">
+                        <i class="bi" [ngClass]="item.icon"></i>
+                    </div>
+                    <h3>{{ item.title }}</h3>
+                    <ul class="detail-list">
+                        @for (detail of item.details; track detail) {
+                        <li>
+                            <i class="bi bi-check2-circle"></i>
+                            <span>{{ detail }}</span>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

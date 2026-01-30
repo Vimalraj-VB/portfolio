@@ -1,5 +1,5 @@
 .profile-card-section {
-  background: radial-gradient(circle at left, #0a0a0a 0%, #02141f 100%);
+  background: var(--primary-bg);
   padding: 6rem 1rem;
   position: relative;
   overflow: hidden;
@@ -14,12 +14,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 16px;
   padding: 2rem;
   max-width: 900px;
   backdrop-filter: blur(20px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 40px var(--shadow-color);
   gap: 2rem;
   z-index: 2;
   animation: fadeUp 1s ease-out forwards;
@@ -31,26 +32,27 @@
 
 .profile-card:hover {
   transform: translateY(0) scale(1.01);
-  box-shadow: 0 18px 50px rgba(59, 163, 176, 0.2);
+  box-shadow: 0 18px 50px var(--shadow-color);
 }
 
 .profile-left img {
   width: 200px;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px var(--shadow-color);
   animation: floatUpDown 3s ease-in-out infinite alternate;
 }
 
 .profile-right {
-  color: white;
+  color: var(--primary-text);
   max-width: 500px;
 }
 
 .profile-right h2 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  background: linear-gradient(90deg, #92c7cf, #3ba3b0, #256d85);
+  background: var(--accent-gradient);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -92,8 +94,9 @@
 }
 
 .btn-outline:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px var(--shadow-color);
+  filter: brightness(1.1);
 }
 
 /* 🌟 Sparkle Animation */
@@ -112,10 +115,8 @@
   position: absolute;
   width: 24px;
   height: 24px;
-  clip-path: polygon(
-    50% 0%, 60% 35%, 100% 50%, 60% 65%,
-    50% 100%, 40% 65%, 0% 50%, 40% 35%
-  );
+  clip-path: polygon(50% 0%, 60% 35%, 100% 50%, 60% 65%,
+      50% 100%, 40% 65%, 0% 50%, 40% 35%);
   animation: sparkleFloat 6s ease-in-out infinite;
   opacity: 0.7;
   z-index: 1;
@@ -149,10 +150,12 @@
     transform: scale(0.9) rotate(0deg);
     opacity: 0.5;
   }
+
   50% {
     transform: scale(1.2) rotate(180deg);
     opacity: 1;
   }
+
   100% {
     transform: scale(0.9) rotate(360deg);
     opacity: 0.5;
@@ -163,6 +166,7 @@
   0% {
     transform: translateY(0px);
   }
+
   100% {
     transform: translateY(-10px);
   }
@@ -236,7 +240,15 @@
 }
 
 @keyframes orbMove {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(30px, -20px) scale(1.05); }
-  100% { transform: translate(-20px, 20px) scale(1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(-20px, 20px) scale(1);
+  }
 }

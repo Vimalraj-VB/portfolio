@@ -1,8 +1,16 @@
 .footer-section {
-  background: radial-gradient(circle at center, #0a0a0a 0%, #02141f 100%);
-  color: #ffffff;
+  background: var(--primary-bg);
+  color: var(--primary-text);
   font-size: 0.95rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  border-top: 1px solid var(--card-border);
+
+  hr {
+    opacity: 0.2;
+    border: 0;
+    border-top: 1px solid var(--primary-text);
+    margin: 2rem 0;
+  }
 }
 
 .footer-nav {
@@ -11,35 +19,39 @@
   flex-wrap: wrap;
   gap: 2rem;
   padding: 0.8rem 1rem;
-  background:transparent;
+  background: transparent;
   border-radius: 12px;
 
   a {
-    color: #ccc;
+    color: var(--secondary-text);
     font-weight: 500;
     text-decoration: none;
     transition: color 0.3s ease;
 
     &:hover {
-      color: #92c7cf;
+      color: var(--accent-color);
     }
   }
 }
 
 .footer-contact {
-  color: #ccc;
+  color: var(--secondary-text);
   font-size: 0.9rem;
   gap: 1.5rem;
   flex-wrap: wrap;
+
+  i {
+    color: var(--accent-color);
+  }
 }
 
 .social-icons a {
-  color: #ffffff;
+  color: var(--primary-text);
   font-size: 1.3rem;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #92c7cf;
+    color: var(--accent-color);
   }
 }
 
